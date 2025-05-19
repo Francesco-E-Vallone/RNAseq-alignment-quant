@@ -5,9 +5,6 @@ FASTQ_DIR=/archive/home/frvallon/B-lymphoma/fastq
 GENOME_DIR=/archive/home/frvallon/B-lymphoma/refseq
 OUT_DIR=/archive/home/frvallon/B-lymphoma/bam
 
-#number of threads (fallback to 8 if not set)
-THREADS=${SLURM_CPUS_PER_TASK:-8}
-
 #creating output directory if it doesn't exist
 mkdir -p $OUT_DIR
 
@@ -26,7 +23,6 @@ for R1 in $FASTQ_DIR/*_1.fastq.gz; do
     STAR --genomeDir $GENOME_DIR \
          --readFilesIn $R1 $R2 \
          --readFilesCommand zcat \
-         --runThreadN $THREADS \
          --outFileNamePrefix $SAMPLE_OUT/ \
          --outSAMtype BAM SortedByCoordinate \
          --quantMode GeneCounts
