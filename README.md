@@ -6,6 +6,6 @@ This repository contains a reproducible pipeline for processing RNA-seq data fro
 	
  •	BAM file generation
 	
- •	Read count normalization to TPM (Transcripts Per Million)
+ •	Read count normalization (featureCounts)
 
 The goal is to generate high-quality, gene-level normalized expression data suitable for downstream analysis and visualization.
