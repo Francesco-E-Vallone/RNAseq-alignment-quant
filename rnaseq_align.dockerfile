@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     samtools \
     libcurl4-gnutls-dev \
+    htop \
     xxd \
     && rm -rf /var/lib/apt/lists/*
 
@@ -37,7 +38,13 @@ RUN wget https://github.com/alexdobin/STAR/archive/2.7.11b.tar.gz && \
     cp STAR /usr/local/bin/ && \
     cd / && \
     rm -rf STAR-2.7.11b* 2.7.11b.tar.gz
-    
+
+#installing featureCounts
+RUN wget https://downloads.sourceforge.net/project/subread/subread-2.0.6/subread-2.0.6-Linux-x86_64.tar.gz && \
+    tar -xzf subread-2.0.6-Linux-x86_64.tar.gz && \
+    cp subread-2.0.6-Linux-x86_64/bin/featureCounts /usr/local/bin/ && \
+    rm -rf subread-2.0.6*
+
 #setting workdir
 WORKDIR /data
 
