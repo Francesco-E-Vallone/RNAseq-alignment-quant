@@ -22,4 +22,4 @@ srun docker run --rm \
   -v $SCRIPT_DIR:$SCRIPT_DIR \
   -w $SCRIPT_DIR \
   registry.gitlab.c3s.unito.it/frvallon/rnaseq_alignment/rnaseq_align:latest \
-  bash "$SCRIPT_DIR/3.counts_quantification.sh"
+  bash "$SCRIPT_DIR/3.counts_quant.sh"
