@@ -1,0 +1,3 @@
+[submodule "rnaseq_alignment"]
+	path = rnaseq_alignment
+	url = git@gitlab.c3s.unito.it:frvallon/rnaseq_alignment.git
