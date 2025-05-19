@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #setting directories
-FASTQ_DIR=/archive/home/frvallon/B-Lymphoma/fastq
-GENOME_DIR=/archive/home/frvallon/B-Lymphoma/refseq
-OUT_DIR=/archive/home/frvallon/B-Lymphoma/bam
+FASTQ_DIR=/archive/home/frvallon/B-lymphoma/fastq
+GENOME_DIR=/archive/home/frvallon/B-lymphoma/refseq
+OUT_DIR=/archive/home/frvallon/B-lymphoma/bam
 
 #number of threads (fallback to 8 if not set)
 THREADS=${SLURM_CPUS_PER_TASK:-8}

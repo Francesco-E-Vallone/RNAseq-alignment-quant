@@ -1,5 +1,5 @@
 #!/bin/bash
-path=/archive/home/frvallon/B-Lymphoma
+path=/archive/home/frvallon/B-lymphoma
 
 # Use SLURM-defined threads if available, else default to 1
 THREADS=${SLURM_CPUS_PER_TASK:-1}
