@@ -6,13 +6,13 @@ read_length=$(gunzip -c $path/fastq/SRR2149844_1.fastq.gz | awk "NR==2 {print le
 echo "Length of the reads is $read_length"
 
 #setting paths
-g_dir=$path/refseq #path to the directory where the genome index will be stored
-g_fna=$g_dir/GCF_000001405.40_GRCh38.p14_genomic.fna #path to the genome fasta file
-g_anno=$g_dir/genomic.gtf #path to the annotation file
+g_dir=/archive/home/frvallon/B-lymphoma/refseq #path to the directory where the genome index will be stored
+g_fna=/archive/home/frvallon/B-lymphoma/refseq/GCF_000001405.40_GRCh38.p14_genomic.fna #path to the genome fasta file
+g_anno=/archive/home/frvallon/B-lymphoma/refseq/genomic.gtf #path to the annotation file
 
 #running STAR genome indexing   
 STAR --runMode genomeGenerate \
-     --genomeDir $g_dir \
+     --genomeDir /archive/home/frvallon/B-lymphoma/refseq \
      --genomeFastaFiles $g_fna \
      --sjdbGTFfile $g_anno \
      --sjdbOverhang $((read_length - 1))
