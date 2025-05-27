@@ -1,20 +1,21 @@
 #!/bin/bash
-path=/archive/home/frvallon/B-lymphoma
-
-#inspecting a read length from a fastq file (parameter for the alignment)
-read_length=$(gunzip -c $path/fastq/SRR2149844_1.fastq.gz | awk "NR==2 {print length; exit}") #it returned 75
-echo "Length of the reads is $read_length"
+path="/archive/home/frvallon/B-lymphoma"
 
 #setting paths
-g_dir=/archive/home/frvallon/B-lymphoma/refseq #path to the directory where the genome index will be stored
-g_fna=/archive/home/frvallon/B-lymphoma/refseq/GCF_000001405.40_GRCh38.p14_genomic.fna #path to the genome fasta file
-g_anno=/archive/home/frvallon/B-lymphoma/refseq/genomic.gtf #path to the annotation file
+g_dir="/archive/home/frvallon/B-lymphoma/refseq"                                        #path to the directory where the genome index will be stored
+g_fna="/archive/home/frvallon/B-lymphoma/refseq/GCF_000001405.40_GRCh38.p14_genomic.fna"  #path to the genome fasta file
+g_anno="/archive/home/frvallon/B-lymphoma/refseq/genomic.gtf"                                 #path to the annotation file
+ 
+#setting paths
+g_dir="/archive/home/frvallon/B-lymphoma/refseq" #path to the directory where the genome index will be stored
+g_fna="/archive/home/frvallon/B-lymphoma/refseq/GCF_000001405.40_GRCh38.p14_genomic.fna" #path to the genome fasta file
+g_anno="/archive/home/frvallon/B-lymphoma/refseq/genomic.gtf" #path to the annotation file
 
 #running STAR genome indexing   
 STAR --runMode genomeGenerate \
-     --genomeDir /archive/home/frvallon/B-lymphoma/refseq \
-     --genomeFastaFiles $g_fna \
-     --sjdbGTFfile $g_anno \
-     --sjdbOverhang $((read_length - 1))
+     --genomeDir "$g_dir" \
+     --genomeFastaFiles "$g_fna" \
+     --sjdbGTFfile "$g_anno" \
+     --sjdbOverhang 74 # 75 - 1, where 75 is the read length
 
 echo "Genome indexing completed"
