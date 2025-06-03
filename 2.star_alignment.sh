@@ -1,4 +1,8 @@
+
 #!/bin/bash
+
+#determine number of threads to use (all but one core)
+THREADS=$(nproc --ignore=1)
 
 #setting directories
 FASTQ_DIR="/archive/home/frvallon/B-lymphoma/fastq"
@@ -20,7 +24,8 @@ for R1 in "$FASTQ_DIR"/*_1.fastq.gz; do
     mkdir -p "$SAMPLE_OUT"
 
     #running STAR
-    STAR --genomeDir "$GENOME_DIR" \
+    STAR --runThreadN "$THREADS" \
+         --genomeDir "$GENOME_DIR" \
          --readFilesIn "$R1" "$R2" \
          --readFilesCommand zcat \
          --outFileNamePrefix "$SAMPLE_OUT/" \

@@ -1,4 +1,8 @@
+
 #!/bin/bash
+
+#setting number of threads (use all but one core)
+THREADS=$(nproc --ignore=1)
 
 #defining paths
 PROJECT_DIR="/archive/home/frvallon/B-lymphoma"
@@ -11,6 +15,6 @@ OUT_FILE="$COUNTS_DIR/gene_counts.txt"
 mkdir -p "$COUNTS_DIR"
 
 #running featureCounts on all BAMs in one go
-featureCounts -p -a "$GTF" -o "$OUT_FILE" "$BAM_DIR"/*.bam
+featureCounts -p -T "$THREADS" -a "$GTF" -o "$OUT_FILE" "$BAM_DIR"/*.bam
 
 echo "FeatureCounts completed. Output saved to: $OUT_FILE"
