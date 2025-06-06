@@ -46,6 +46,11 @@ RUN wget https://downloads.sourceforge.net/project/subread/subread-2.0.6/subread
     cp subread-2.0.6-Linux-x86_64/bin/featureCounts /usr/local/bin/ && \
     rm -rf subread-2.0.6*
 
+#installing fastp
+RUN wget https://github.com/OpenGene/fastp/releases/download/v0.23.4/fastp && \
+    chmod +x fastp && \
+    mv fastp /usr/local/bin/
+
 #setting workdir
 WORKDIR /data
 
