@@ -37,7 +37,7 @@ if [[ "$COPIED" -eq 0 ]]; then
 fi
 
 echo "== Running featureCounts on $COPIED BAM files... =="
-featureCounts -p -T "$THREADS" -t exon -g gene_id \
+featureCounts -p -s 2 -T "$THREADS" -t exon -g gene_id \
     -a "$GTF" -o "$OUT_FILE" "$TEMP_BAMS"/*.bam
 
 #removing temp files
